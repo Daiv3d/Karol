@@ -6,13 +6,12 @@
     <title>Karol G - Fátima y Alma</title>
     <link rel="stylesheet" href="primer.css">
 </head>
-<!-- encabezado corregido y extendido by me el mero mero -->
 <body>
-    <!-- Header Principal -->
-    <header class="main-header">
+    
+    <header class="main-header" id="top">
         <div class="header-content">
             <h1>KAROL G</h1>
-            <p class="subtitle">La mera mera petatera</p>
+            <p class="subtitle">La Bichota</p>
             <div class="divider"></div>
             <p class="authors">Presentado por Fátima y Alma</p>
         </div>
@@ -21,8 +20,7 @@
     
     <main class="container">
 
- <!-- Seccion donde se pego la direccion del instagram -->
-
+        
         <section class="hero-section">
             <div class="image-wrapper">
                 <img src="KAROLG.JPG" class="main-image" alt="Karol G">
@@ -35,7 +33,7 @@
         </section>
 
         <div class="media-grid">
-            <!-- Sección de Video -->
+            
             <section class="media-section">
                 <h2>Video</h2>
                 <div class="media-wrapper">
@@ -56,19 +54,19 @@
             </section>
         </div>
 
-        <!-- Sección de Galería de Conciertos -->
+       
         <section class="gallery-section">
             <h2 class="section-title">Galería de Conciertos</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('CONCIERTO.JPEG', 'Concierto 1')">
                     <img src="CONCIERTO.JPEG" alt="Concierto de Karol G">
                     <p class="gallery-caption">Concierto 1</p>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('concierto2.jpg', 'Concierto 2')">
                     <img src="concierto2.jpg" alt="Concierto de Karol G 2">
                     <p class="gallery-caption">Concierto 2</p>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" onclick="openLightbox('concierto3.jpg', 'Concierto 3')">
                     <img src="concierto3.jpg" alt="Concierto de Karol G 3">
                     <p class="gallery-caption">Concierto 3</p>
                 </div>
@@ -77,9 +75,65 @@
 
     </main>
 
-    <!-- Footer -->
+
     <footer class="main-footer">
         <p>Proyecto Escolar 2026 - Fátima y Alma</p>
     </footer>
+
+    
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        ↑
+    </button>
+
+    <
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-content" id="lightboxImg" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <script>
+        // Función para abrir el lightbox
+        function openLightbox(imgSrc, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            
+            lightbox.classList.add('active');
+            lightboxImg.src = imgSrc;
+            lightboxCaption.textContent = caption;
+        }
+
+        // Función para cerrar el lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        // Función para scroll suave al inicio
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+       
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+    
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
